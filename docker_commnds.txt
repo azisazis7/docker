@@ -1,5 +1,5 @@
 #this is docker container start command with privilages and init to workaround centos7 systemd issue in containers. Once contesner started this way then connect with docker exec or ssh into container.
 
-docker run --name=dev1 --hostname=devhost.example.com -it -e container=docker -v /sys/fs/cgroup:/sys/fs/cgroup:ro azisazis7/centos7:latest /sbin/init
+docker run --name=dev1 --hostname=devhost.example.com -it -e container=docker -v /sys/fs/cgroup:/sys/fs/cgroup:ro --privileged azisazis7/centos7:latest /sbin/init
 
 
