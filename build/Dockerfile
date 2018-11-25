@@ -1,8 +1,8 @@
-#This is custom ubuntu image with ssh
-
-FROM ubuntu:xenial
-MAINTAINER ansible <ansible@localhost>
-RUN apt-get update
-RUN apt-get install telnet openssh-server -y
-RUN echo "this is version 2" >> version.txt
-RUN apt-get install apache2 -y
+FROM centos:centos6
+LABEL testcontainer ansible@localhost
+MAINTAINER ansible@localhost
+RUN yum update -y && yum install openssh-server -y
+RUN useradd ansible
+RUN echo "ansible:1234" | chpasswd
+COPY ./bashrc /root/.bashrc
+CMD /bin/bash
